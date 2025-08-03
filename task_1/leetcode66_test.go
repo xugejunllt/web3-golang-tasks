@@ -14,7 +14,7 @@ package task1
 **/
 
 import (
-	"fmt"
+	"reflect"
 	"testing"
 )
 
@@ -32,5 +32,12 @@ func plusOne(digits []int) []int {
 
 func TestPlusOne(t *testing.T) {
 	input := []int{1, 3, 9}
-	fmt.Print("加1结果:", plusOne(input))
+	// fmt.Print("加1结果:", plusOne(input))
+	result := plusOne(input)
+	t.Logf("加1结果: %v", result)
+	// 添加一个实际断言
+	expected := []int{1, 4, 0}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("期望得到 %v,但实际得到 %v", expected, result)
+	}
 }
